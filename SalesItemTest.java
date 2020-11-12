@@ -181,60 +181,60 @@ public class SalesItemTest
         item3.showInfo();
     }
     
-/**
-* Upvote the comment at 'index'. That is: count this comment as more helpful.
-* If the index is invalid, do nothing.
-*/
-@Test
-public void upvoteComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  assertEqual(1, comments.get(index).upvote());
-  }
-  }
+    /**
+    * Test that a comment is upvoted.
+    */
+    @Test
+    public void testupvoteComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name","Comment",2);
+      salesIte1.upvoteComment(0);
+      salesIte1.showInfo();
+      }
 
-/**
-* Downvote the comment at 'index'. That is: count this comment as less helpful.
-* If the index is invalid, do nothing.
-*/
-@Test
-public void downvoteComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  assertEqual(-1, comments.get(index).downvote());
-  }
-  }
+    /**
+    * Test that a comment is downvoted.
+    */
+    @Test
+    public void testdownvoteComment()
+       {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name","Comment",2);
+      salesIte1.downvoteComment(0);
+      salesIte1.showInfo();
+      }
 
-/**
-* Return the most helpful comment. The most useful comment is the one with the highest vote
-* balance. If there are multiple comments with equal highest balance, return any one of
-* them.
-*/
-@Test
-public Comment findMostHelpfulComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  Iterator<Comment> it = comments.iterator();
-  Comment best = it.next();
-  while(it.hasNext()) {
-  Comment current = it.next();
-  if(current.getVoteCount() > best.getVoteCount()) {
-  best = current;
-  }
-  }
-  return best;
-  }
+    /**
+    * Return the most helpful comment. The most useful comment is the one with the highest vote
+    * balance. If there are multiple comments with equal highest balance, return any one of
+    * them.
+    */
+    @Test
+    public Comment findMostHelpfulComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      Iterator<Comment> it = comments.iterator();
+      Comment best = it.next();
+      while(it.hasNext()) {
+      Comment current = it.next();
+      if(current.getVoteCount() > best.getVoteCount()) {
+      best = current;
+      }
+      }
+      return best;
+      }
 
-/**
-* Check whether the given rating is invalid. Return true if it is invalid.
-* Valid ratings are in the range [1..5].
-*/
-@Test
-private boolean ratingInvalid(int rating)
-  {
-  return rating < 0 || rating > 5;
-  }
-}
+    /**
+    * Check whether the given rating is invalid. Return true if it is invalid.
+    * Valid ratings are in the range [1..5].
+    */
+    @Test
+    private boolean ratingInvalid(int rating)
+      {
+      return rating < 0 || rating > 5;
+      }
+    }
 
 
 
