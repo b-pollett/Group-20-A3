@@ -180,9 +180,7 @@ public class SalesItemTest
     public void testupvoteComment()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      salesIte1.addComment("author_name","Comment",2);
-      salesIte1.upvoteComment(0);
-      salesIte1.showInfo();
+      assertEquals(1,comments.get(index).upvote());
       }
 
     /**
@@ -192,9 +190,7 @@ public class SalesItemTest
     public void testdownvoteComment()
        {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      salesIte1.addComment("author_name","Comment",2);
-      salesIte1.downvoteComment(0);
-      salesIte1.showInfo();
+      assertEquals(-1,comments.get(index).downvote());
       }
 
     /**
@@ -222,9 +218,12 @@ public class SalesItemTest
     * Valid ratings are in the range [1..5].
     */
     @Test
-    private boolean ratingInvalid(int rating)
+    private boolean ratingInvalid()
       {
-      return rating < 0 || rating > 5;
+        SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+        salesIte1.addComment("author_name","Comment",20);
+        assertEquals(true, salesIte1.addComment("Joshua Black", "Not worth the money.", 3));
+        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money.", -5));
       }
     }
 
