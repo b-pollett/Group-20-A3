@@ -188,7 +188,8 @@ public class SalesItemTest
     public void testupvoteComment()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      assertEquals(1,comments.get(index).upvote());
+      salesIte1.upvoteComment(0);
+      salesIte1.showInfo();
       }
 
     /**
@@ -198,13 +199,12 @@ public class SalesItemTest
     public void testdownvoteComment()
        {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      assertEquals(-1,comments.get(index).downvote());
+      salesIte1.downvoteComment(0);
+      salesIte1.showInfo();
       }
 
     /**
-    * Return the most helpful comment. The most useful comment is the one with the highest vote
-    * balance. If there are multiple comments with equal highest balance, return any one of
-    * them.
+    * Test for the MostHelpfulComment
     */
     @Test
     public Comment testfindMostHelpfulCommentEmpty()
@@ -226,8 +226,7 @@ public class SalesItemTest
       
 
     /**
-    * Check whether the given rating is invalid. Return true if it is invalid.
-    * Valid ratings are in the range [1..5].
+    * Test whether the rating is valid or invalid.
     */
     @Test
     private boolean ratingInvalid()
