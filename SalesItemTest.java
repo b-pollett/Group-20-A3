@@ -202,16 +202,20 @@ public class SalesItemTest
     public Comment findMostHelpfulComment()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      Iterator<Comment> it = comments.iterator();
-      Comment best = it.next();
-      while(it.hasNext()) {
-      Comment current = it.next();
-      if(current.getVoteCount() > best.getVoteCount()) {
-      best = current;
+      assertEquals(false, salesite1.findMostHelpfulComment());
       }
+    
+    @Test
+    public Comment findMostHelpfulComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name", "Comment", 2);
+      salesIte1.addComment("author_name2", "Comment", 5);
+      salesIte1.upvoteComment(1);
+      assertEquals("author_name2", salesite1.findMostHelpfulComment().getAuthor());
       }
-      return best;
-      }
+      
+      
 
     /**
     * Check whether the given rating is invalid. Return true if it is invalid.
@@ -225,7 +229,8 @@ public class SalesItemTest
         assertEquals(true, salesIte1.addComment("Joshua Black", "Not worth the money.", 3));
         assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money.", -5));
       }
-    }
+    
+    
 
 
 
