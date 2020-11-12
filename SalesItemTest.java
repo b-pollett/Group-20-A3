@@ -173,15 +173,14 @@ public class SalesItemTest
         item3.showInfo();
     }
     
-    /**
+/**
 * Upvote the comment at 'index'. That is: count this comment as more helpful.
 * If the index is invalid, do nothing.
 */
 @Test
-public void upvoteComment(int index)
+public void upvoteComment()
   {
   SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  if(index >=0 && index < comments.size()) { // if index is valid
   assertEqual(1, comments.get(index).upvote());
   }
   }
@@ -191,10 +190,9 @@ public void upvoteComment(int index)
 * If the index is invalid, do nothing.
 */
 @Test
-public void downvoteComment(int index)
+public void downvoteComment()
   {
   SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  if(index >=0 && index < comments.size()) { // if index is valid
   assertEqual(-1, comments.get(index).downvote());
   }
   }
