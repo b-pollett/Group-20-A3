@@ -94,6 +94,9 @@ public class SalesItemTest
         assertEquals(1000, salesIte1.getPrice());
     }
 
+    /**
+     * Tests that the comment successfully gets add to an item.
+     */
     @Test
     public void addComment()
     {
@@ -102,7 +105,7 @@ public class SalesItemTest
     }
     
     /**
-     * Test that a sales item is correctly initialised (name and price).
+     * Test that a comment is removed.
      */
     @Test
     public void testRemoveComment()
@@ -110,12 +113,12 @@ public class SalesItemTest
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
         salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 1);
         salesIte1.addComment("Fred", "Great - I perform brain surgery every week now!", 4);
-        salesIte1.removeComment(1);
+        salesIte1.removeComment(0);
         assertEquals(1, salesIte1.getNumberOfComments());
     }
 
     /**
-     * Test that a sales item is correctly initialised (name and price).
+     * Test that removeComment does nothing if no comments are found.
      */
     @Test
     public void testRemoveCommentEmpty()
@@ -126,7 +129,7 @@ public class SalesItemTest
     }
     
     /**
-     * Test that a sales item is correctly initialised (name and price).
+     * Test that removeComment does nothing if the index is invalid.
      */
     @Test
     public void testRemoveCommentInvalid()
