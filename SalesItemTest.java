@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.lang.reflect.Method;
 
 /**
  * The test class SalesItemTest.
@@ -135,7 +136,29 @@ public class SalesItemTest
         salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 1);
         salesIte1.removeComment(2);
         assertEquals(1, salesIte1.getNumberOfComments());
-    }    
+    }   
+    
+    @Test
+    public void testfindCommentByAuthor()
+    {
+        SalesItem item = new SalesItem("item 1", 00001);
+        item.addComment("Author1", "Comment1", 5);
+        assertEquals(1, item.getNumberOfComments());
+        item.addComment("Author2", "Comment2", 4);
+        assertEquals(2, item.getNumberOfComments());
+        item.addComment("Author2", "Comment3", 2);
+        assertEquals(2, item.getNumberOfComments());
+    }
+    @Test
+    public void testpriceString()
+    {
+        SalesItem item1 = new SalesItem("item1", 14394);
+        item1.showInfo();
+        SalesItem item2 = new SalesItem("item2", 32509);
+        item2.showInfo();
+        SalesItem item3 = new SalesItem("item3", -1304);
+        item3.showInfo();
+    }
 }
 
 
