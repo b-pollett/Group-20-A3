@@ -173,104 +173,61 @@ public class SalesItemTest
         item3.showInfo();
     }
     
-/**
-* Test that a comment is upvoted.
-*/
-@Test
-public void testUpvoteComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  assertEqual(1, comments.get(index).upvote());
-  }
-  }
+    /**
+    * Test that a comment is upvoted.
+    */
+    @Test
+    public void testupvoteComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name","Comment",2);
+      salesIte1.upvoteComment(0);
+      salesIte1.showInfo();
+      }
 
+   
+    /**
+    * Test that a comment is downvoted.
+    */
+    @Test
+    public void testDownvoteComment()
+       {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name","Comment",2);
+      salesIte1.downvoteComment(0);
+      salesIte1.showInfo();
+      }
 
-/**
- * Test that upvoteComment does nothing if no comments are found.
- */
-@Test
-public void testUpvoteCommentEmpty()
-{
-    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-    salesIte1.upvoteComment(1);
-    assertEquals(0, salesIte1.getNumberOfComments());
-}
+    /**
+    * Return the most helpful comment. The most useful comment is the one with the highest vote
+    * balance. If there are multiple comments with equal highest balance, return any one of
+    * them.
+    */
+    @Test
+    public Comment findMostHelpfulComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      Iterator<Comment> it = comments.iterator();
+      Comment best = it.next();
+      while(it.hasNext()) {
+      Comment current = it.next();
+      if(current.getVoteCount() > best.getVoteCount()) {
+      best = current;
+      }
+      }
+      return best;
+      }
 
-/**
- * Test that upvoteComment does nothing if the index is invalid.
- */
-@Test
-public void testUpvoteCommentInvalid()
-{
-    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-    salesIte1.upvoteComment(2);
-    assertEquals(1, salesIte1.getNumberOfComments());
-}   
-
-/**
-* Test that a comment is downvoted.
-*/
-@Test
-public void testDownvoteComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  assertEqual(-1, comments.get(index).downvote());
-  }
-  }
-
-
-/**
- * Test that downvoteComment does nothing if no comments are found.
- */
-@Test
-public void testUpvoteCommentEmpty()
-{
-    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-    salesIte1.downvoteComment(1);
-    assertEquals(0, salesIte1.getNumberOfComments());
-}
-
-/**
- * Test that downvoteComment does nothing if the index is invalid.
- */
-@Test
-public void testDownvoteCommentInvalid()
-{
-    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-    salesIte1.downvoteComment(2);
-    assertEquals(-1, salesIte1.getNumberOfComments());
-}   
-
-/**
-* Return the most helpful comment. The most useful comment is the one with the highest vote
-* balance. If there are multiple comments with equal highest balance, return any one of
-* them.
-*/
-@Test
-public Comment findMostHelpfulComment()
-  {
-  SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-  Iterator<Comment> it = comments.iterator();
-  Comment best = it.next();
-  while(it.hasNext()) {
-  Comment current = it.next();
-  if(current.getVoteCount() > best.getVoteCount()) {
-  best = current;
-  }
-  }
-  return best;
-  }
-
-/**
-* Check whether the given rating is invalid. Return true if it is invalid.
-* Valid ratings are in the range [1..5].
-*/
-@Test
-private boolean ratingInvalid(int rating)
-  {
-  return rating < 0 || rating > 5;
-  }
-}
+    /**
+    * Check whether the given rating is invalid. Return true if it is invalid.
+    * Valid ratings are in the range [1..5].
+    */
+    @Test
+    private boolean ratingInvalid(int rating)
+      {
+      return rating < 0 || rating > 5;
+      }
+    }
 
 
 
