@@ -20,7 +20,7 @@ public void downvoteComment(int index)
   {
   SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
   if(index >=0 && index < comments.size()) { // if index is valid
-  assertEqual(1, comments.get(index).downvote());
+  assertEqual(-1, comments.get(index).downvote());
   }
   }
 
