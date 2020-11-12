@@ -174,28 +174,72 @@ public class SalesItemTest
     }
     
 /**
-* Upvote the comment at 'index'. That is: count this comment as more helpful.
-* If the index is invalid, do nothing.
+* Test that a comment is upvoted.
 */
 @Test
-public void upvoteComment()
+public void testUpvoteComment()
   {
   SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
   assertEqual(1, comments.get(index).upvote());
   }
   }
 
+
 /**
-* Downvote the comment at 'index'. That is: count this comment as less helpful.
-* If the index is invalid, do nothing.
+ * Test that upvoteComment does nothing if no comments are found.
+ */
+@Test
+public void testUpvoteCommentEmpty()
+{
+    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+    salesIte1.upvoteComment(1);
+    assertEquals(0, salesIte1.getNumberOfComments());
+}
+
+/**
+ * Test that upvoteComment does nothing if the index is invalid.
+ */
+@Test
+public void testUpvoteCommentInvalid()
+{
+    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+    salesIte1.upvoteComment(2);
+    assertEquals(1, salesIte1.getNumberOfComments());
+}   
+
+/**
+* Test that a comment is downvoted.
 */
 @Test
-public void downvoteComment()
+public void testDownvoteComment()
   {
   SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
   assertEqual(-1, comments.get(index).downvote());
   }
   }
+
+
+/**
+ * Test that downvoteComment does nothing if no comments are found.
+ */
+@Test
+public void testUpvoteCommentEmpty()
+{
+    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+    salesIte1.downvoteComment(1);
+    assertEquals(0, salesIte1.getNumberOfComments());
+}
+
+/**
+ * Test that downvoteComment does nothing if the index is invalid.
+ */
+@Test
+public void testDownvoteCommentInvalid()
+{
+    SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+    salesIte1.downvoteComment(2);
+    assertEquals(-1, salesIte1.getNumberOfComments());
+}   
 
 /**
 * Return the most helpful comment. The most useful comment is the one with the highest vote
