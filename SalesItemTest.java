@@ -185,12 +185,11 @@ public class SalesItemTest
       salesIte1.showInfo();
       }
 
-   
     /**
     * Test that a comment is downvoted.
     */
     @Test
-    public void testDownvoteComment()
+    public void testdownvoteComment()
        {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
       salesIte1.addComment("author_name","Comment",2);
