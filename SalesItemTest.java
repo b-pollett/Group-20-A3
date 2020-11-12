@@ -207,14 +207,14 @@ public class SalesItemTest
     * Test for the MostHelpfulComment
     */
     @Test
-    public Comment testfindMostHelpfulCommentEmpty()
+    public void testfindMostHelpfulCommentEmpty()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
       assertEquals(false, salesIte1.findMostHelpfulComment());
       }
     
     @Test
-    public Comment testfindMostHelpfulComment()
+    public void testfindMostHelpfulComment()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
       salesIte1.addComment("author_name", "Comment", 2);
@@ -229,7 +229,7 @@ public class SalesItemTest
     * Test whether the rating is valid or invalid.
     */
     @Test
-    private boolean ratingInvalid()
+    public void testratingInvalid()
       {
         SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
         salesIte1.addComment("author_name","Comment",20);
