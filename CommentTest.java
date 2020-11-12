@@ -40,6 +40,10 @@ public class CommentTest
     {
     }
     
+    /**
+     * test for downvote(). calling method when vote count is zero, when vote count is a positive number and calling method twice in a row to check the 
+     * vote count decreases or not.
+     */
     @Test
     public void testdownvote()
     {
@@ -60,7 +64,12 @@ public class CommentTest
         
     }
     
-    @Test
+    /**
+     * test for getRating(). testing with a positive valid rating and once for an invalid rating. since there is not check for invalid rating in Comment class
+     * the invalid value will be returned. hence the test will fail.
+     * (note that SalesItem has a check for invalidrating and Comment class does not)
+     */
+   @Test
     public void testgetRating()
     {
         Comment c2 = new Comment("Author2", "Comment2", 2);

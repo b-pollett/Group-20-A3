@@ -151,6 +151,10 @@ public class SalesItemTest
         assertEquals(1, salesIte1.getNumberOfComments());
     }   
     
+    /**
+     * test for findCommentByAuthor(). we'll add comments in empty list and filled list with both new authors and used authors to determine whether the
+     * the method that is being used by addComment is functioning or not.
+     */
     @Test
     public void testfindCommentByAuthor()
     {
@@ -162,6 +166,10 @@ public class SalesItemTest
         item.addComment("Author2", "Comment3", 2);
         assertEquals(2, item.getNumberOfComments());
     }
+    
+    /**
+     * Test for priceString()  . We'll input different prices and manually debug using the print statements that if the output is correctly displayed
+     */ 
     @Test
     public void testpriceString()
     {
