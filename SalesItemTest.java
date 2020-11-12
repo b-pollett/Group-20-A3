@@ -188,6 +188,7 @@ public class SalesItemTest
     public void testupvoteComment()
       {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name", "Comment",2);
       salesIte1.upvoteComment(0);
       salesIte1.showInfo();
       }
@@ -199,6 +200,7 @@ public class SalesItemTest
     public void testdownvoteComment()
        {
       SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name", "Comment",2);
       salesIte1.downvoteComment(0);
       salesIte1.showInfo();
       }
