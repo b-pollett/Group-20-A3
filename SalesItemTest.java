@@ -2,7 +2,6 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.lang.reflect.Method;
 
 /**
  * The test class SalesItemTest.
@@ -180,60 +179,6 @@ public class SalesItemTest
         SalesItem item3 = new SalesItem("item3", -1304);
         item3.showInfo();
     }
-    
-    /**
-    * Test that a comment is upvoted.
-    */
-    @Test
-    public void testupvoteComment()
-      {
-      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      assertEquals(1,comments.get(index).upvote());
-      }
-
-    /**
-    * Test that a comment is downvoted.
-    */
-    @Test
-    public void testdownvoteComment()
-       {
-      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      assertEquals(-1,comments.get(index).downvote());
-      }
-
-    /**
-    * Return the most helpful comment. The most useful comment is the one with the highest vote
-    * balance. If there are multiple comments with equal highest balance, return any one of
-    * them.
-    */
-    @Test
-    public Comment findMostHelpfulComment()
-      {
-      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-      Iterator<Comment> it = comments.iterator();
-      Comment best = it.next();
-      while(it.hasNext()) {
-      Comment current = it.next();
-      if(current.getVoteCount() > best.getVoteCount()) {
-      best = current;
-      }
-      }
-      return best;
-      }
-
-    /**
-    * Check whether the given rating is invalid. Return true if it is invalid.
-    * Valid ratings are in the range [1..5].
-    */
-    @Test
-    private boolean ratingInvalid()
-      {
-        SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-        salesIte1.addComment("author_name","Comment",20);
-        assertEquals(true, salesIte1.addComment("Joshua Black", "Not worth the money.", 3));
-        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money.", -5));
-      }
-    }
-
+}
 
 
