@@ -158,11 +158,11 @@ public class SalesItemTest
     public void testfindCommentByAuthor()
     {
         SalesItem item = new SalesItem("item 1", 00001);
-        item.addComment("Author1", "Comment1", 5);
+        assertEquals(true, item.addComment("Author1", "Comment1", 5));
         assertEquals(1, item.getNumberOfComments());
-        item.addComment("Author2", "Comment2", 4);
+        assertEquals(true, item.addComment("Author2", "Comment2", 4));
         assertEquals(2, item.getNumberOfComments());
-        item.addComment("Author2", "Comment3", 2);
+        assertEquals(false, item.addComment("Author2", "Comment3", 2));
         assertEquals(2, item.getNumberOfComments());
     }
     
@@ -179,6 +179,64 @@ public class SalesItemTest
         SalesItem item3 = new SalesItem("item3", -1304);
         item3.showInfo();
     }
+
+    
+    /**
+    * Test that a comment is upvoted.
+    */
+    @Test
+    public void testupvoteComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      assertEquals(1,comments.get(index).upvote());
+      }
+
+    /**
+    * Test that a comment is downvoted.
+    */
+    @Test
+    public void testdownvoteComment()
+       {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      assertEquals(-1,comments.get(index).downvote());
+      }
+
+    /**
+    * Return the most helpful comment. The most useful comment is the one with the highest vote
+    * balance. If there are multiple comments with equal highest balance, return any one of
+    * them.
+    */
+    @Test
+    public Comment testfindMostHelpfulCommentEmpty()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      assertEquals(false, salesIte1.findMostHelpfulComment());
+      }
+    
+    @Test
+    public Comment testfindMostHelpfulComment()
+      {
+      SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+      salesIte1.addComment("author_name", "Comment", 2);
+      salesIte1.addComment("author_name2", "Comment", 5);
+      salesIte1.upvoteComment(1);
+      assertEquals("author_name2", salesIte1.findMostHelpfulComment().getAuthor());
+      }
+      
+      
+
+    /**
+    * Check whether the given rating is invalid. Return true if it is invalid.
+    * Valid ratings are in the range [1..5].
+    */
+    @Test
+    private boolean ratingInvalid()
+      {
+        SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
+        salesIte1.addComment("author_name","Comment",20);
+        assertEquals(true, salesIte1.addComment("Joshua Black", "Not worth the money.", 3));
+        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money.", -5));
+      }
 }
 
 

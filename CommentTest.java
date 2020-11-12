@@ -75,8 +75,8 @@ public class CommentTest
         Comment c2 = new Comment("Author2", "Comment2", 2);
         assertEquals(2, c2.getRating());
         
-        Comment c3 = new Comment("Author3", "Comment3", -2);
-        assertFalse(c3.getRating() < 0);
+        Comment c3 = new Comment("Author3", "Comment3", -1);
+        assertFalse(c3.getRating() < 0 || c3.getRating() > 5);
     }
     
     
