@@ -196,9 +196,7 @@ public class SalesItemTest
       }
 
     /**
-    * Return the most helpful comment. The most useful comment is the one with the highest vote
-    * balance. If there are multiple comments with equal highest balance, return any one of
-    * them.
+    * Test for the MostHelpfulComment
     */
     @Test
     public Comment findMostHelpfulComment()
@@ -220,8 +218,7 @@ public class SalesItemTest
       
 
     /**
-    * Check whether the given rating is invalid. Return true if it is invalid.
-    * Valid ratings are in the range [1..5].
+    * Test whether the rating is valid or invalid.
     */
     @Test
     private boolean ratingInvalid()
