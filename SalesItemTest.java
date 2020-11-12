@@ -46,8 +46,8 @@ public class SalesItemTest
     {
         SalesItem salesIte1 = new SalesItem("Brain surgery for Dummies", 21998);
         assertEquals(0, salesIte1.getNumberOfComments());
-        salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4);
-        salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 1);
+        salesIte1.addComment("James Duckling", "This book is great.", 4);
+        salesIte1.addComment("Joshua Black", "Not worth the money.", 1);
         assertEquals(2, salesIte1.getNumberOfComments());
     }
 
@@ -58,7 +58,7 @@ public class SalesItemTest
     public void testAddComment()
     {
         SalesItem salesIte1 = new SalesItem("Brain surgery for Dummies", 21998);
-        assertEquals(true, salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
+        assertEquals(true, salesIte1.addComment("James Duckling", "This book is great.", 4));
         assertEquals(1, salesIte1.getNumberOfComments());
     }
 
@@ -69,7 +69,7 @@ public class SalesItemTest
     public void testIllegalRating()
     {
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
-        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", -5));
+        assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money.", -5));
     }
     
     /**
@@ -95,13 +95,23 @@ public class SalesItemTest
     }
 
     /**
+     * Test that a sales item using an invalid price is rejected.
+     */
+    @Test
+    public void testIllegalPrice()
+    {
+        SalesItem salesIte1 = new SalesItem("Java", -1000);
+        assertNull(salesIte1);
+    }
+    
+    /**
      * Tests that the comment successfully gets add to an item.
      */
     @Test
     public void addComment()
     {
         SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-        assertEquals(true, salesIte1.addComment("Fred", "Great - I perform brain surgery every week now!", 4));
+        assertEquals(true, salesIte1.addComment("Fred", "Great!", 4));
     }
     
     /**
@@ -111,8 +121,8 @@ public class SalesItemTest
     public void testRemoveComment()
     {
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
-        salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 1);
-        salesIte1.addComment("Fred", "Great - I perform brain surgery every week now!", 4);
+        salesIte1.addComment("Joshua Black", "Not worth the money.", 1);
+        salesIte1.addComment("Fred", "Great!", 4);
         salesIte1.removeComment(0);
         assertEquals(1, salesIte1.getNumberOfComments());
     }
@@ -135,7 +145,7 @@ public class SalesItemTest
     public void testRemoveCommentInvalid()
     {
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
-        salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", 1);
+        salesIte1.addComment("Joshua Black", "Not worth the money.", 1);
         salesIte1.removeComment(2);
         assertEquals(1, salesIte1.getNumberOfComments());
     }    
