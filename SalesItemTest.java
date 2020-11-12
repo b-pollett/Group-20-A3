@@ -232,7 +232,6 @@ public class SalesItemTest
     public void testratingInvalid()
       {
         SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
-        salesIte1.addComment("author_name","Comment",3);
         assertEquals(true, salesIte1.addComment("John Doe", "Brain Surgery for Dummies.", 3));
         assertEquals(false, salesIte1.addComment("Jane Doe", "Not worth the money.", -5));
       }
